@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exchage Rate Calculate</title>
+    <link rel="stylesheet" href="css.css" />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <div class="total">
+      <div class="logo">
+        <img src="img/money.png" alt="money" />
+        <div class="descript">Exchange Rate Calculator</div>
+      </div>
+      <div class="section">
+        <div class="section_input">
+          <select id="input_country" type="text"/>
+            <option value="한국">한국</option>
+            <option value="미국">미국</option>
+            <option value="일본">일본</option>
+          <input id="input_charge"type="number" placeholder="입력 금액">
+        </div>
+        <div class="section_center">
+          <button id="btn">Swap</button>
+          <span id="charge">기준 당 환율 금액 제시:</ㄴ>
+        </div>
+        <div class="section_output">
+          <select id="output_country" type="text"/>
+            <option value="한국">한국</option>
+            <option value="미국">미국</option>
+            <option value="일본">일본</option>
+          <input id="output_charge" type="text" placeholder="변환 금액">
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+body {
+  background-color: azure;
+}
+.total {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.total img {
+  size: 20px;
+  margin: 50px 0px 30px 13px;
+}
+.descript {
+  font-size: 25px;
+  color: rgb(95, 187, 167);
+}
