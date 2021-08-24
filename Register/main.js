@@ -8,6 +8,9 @@ const $submitBtn = document.querySelector('#submitBtn');
 let userName;
 $userName.addEventListener('input',(event)=>{
   userName = event.target.value;
+  if(userName === "a"){
+    console.log('a');
+  }
   console.log(userName);
 })
 
@@ -35,11 +38,11 @@ $confirmPW.addEventListener('input',(event)=>{
 $submitBtn.addEventListener('click',()=>{
   if($userName.value === "" || $email.value === ""|| $passWord.value === ""|| $confirmPW.value ==="")
   {
-    alert('Please wirte all!')
+    alert('모두 작성해주세요.')
   } else if(confirmPW === passWord){
-    alert('Regist');
+    alert('등록 되었습니다.');
   } else{
-    alert('Please try again.');
+    alert('비밀번호가 일치하지 않습니다.');
   }
   $userName.value = "";
   $email.value = "";
