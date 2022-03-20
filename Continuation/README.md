@@ -1,3 +1,0 @@
-# Continuation Game with JS
-
-  
