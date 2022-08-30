@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+<body style="display:flex; align-items: center; justify-content:center; min-height:100vh; background-color:#F9FAFB">
+    <div class="card" style="width: 400px; height:500px; padding:30px 40px; border-radius:5px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    ;">
+        <h3 style="margin:15px auto;">Register With Us</h3>
+
+        <div style="display:flex; flex-direction:column; padding-bottom:5px;">
+            <label for="">UserName</label>
+            <input id="username" type="text" placeholder="Enter username">
+            <small id="username-small" style="visibility:hidden;">Error Message</small>
+        </div>
+
+        <div style="display:flex; flex-direction:column; padding-bottom:5px;">
+            <label for="">Email</label>
+            <input id="email" type="Email" placeholder="Enter email">
+            <small id="email-small" style="visibility:hidden;">Error Message</small>
+        </div>
+
+        <div style="display:flex; flex-direction:column; padding-bottom:5px;">
+            <label for="">Password</label>
+            <input id="password" type="password" placeholder="Enter Password">
+            <small id="password-small" style="visibility:hidden;">Error Message</small>
+        </div>
+
+        <div style="display:flex; flex-direction:column; padding-bottom:5px;">
+            <label for="">Confirm Password</label>
+            <input id="confirm" type="password" placeholder="Enter password again">
+            <small id="confirm-small" style="visibility:hidden;">Error Message</small>
+        </div>
+
+        <button class="btn btn-primary btn-xs btn-default" style="padding:10px;" onclick="submit()">Submit</button>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script>
+        const $ = (event)=>{
+            return document.querySelector(event);
+        }
+
+        function UserName(){
+            // username이 3글자 이상인지
+            if($('#username').value.length >=3){
+                $('#username').style.border = "4px solid green";
+                $('#username-small').style.visibility = "hidden";
+            }
+            else{
+                $('#username').style.border = "2px solid red";
+                $('#username-small').innerHTML ="Username must be at least 3 characters";
+                $('#username-small').style.color = "red";
+                $('#username-small').style.visibility = "visible";
+            }
+        }
+
+        function Email(){
+            // 이메일 양식이 맞는지
+            const emailVal = $('#email').value;
+            // 정규식
+            var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+            
+            if (emailVal.match(regExp) != null) {
+                $('#email').style.border = "4px solid green";
+                $('#email-small').style.visibility = "hidden";
+              }
+              else {
+                $('#email').style.border = "2px solid red";
+                $('#email-small').innerHTML ="Email is not valid";
+                $('#email-small').style.color = "red";     
+                $('#email-small').style.visibility = "visible";
+  
+              }   
+        }
+
+        function Password(){
+            // 비밀번호가 최소 6글자 이상인지
+            if($('#password').value.length >=6){
+                $('#password').style.border = "4px solid green";
+                $('#password-small').style.visibility = "hidden";
+            }
+            else{
+                $('#password').style.border = "2px solid red";
+                $('#password-small').innerHTML ="Password must be at least 6 characters";
+                $('#password-small').style.color = "red";
+                $('#password-small').style.visibility = "visible";
+
+            }
+        }
+
+        function Confirm(){
+            // 비밀번호가 일치하는지
+            if($('#confirm').value === ""){
+                $('#confirm').style.border = "2px solid red";
+                $('#confirm-small').innerHTML ="Password2 is required";
+                $('#confirm-small').style.color = "red";
+                $('#confirm-small').style.visibility = "visible";
+            }
+            else if($('#confirm').value === $('#password').value){
+                $('#confirm').style.border = "4px solid green";
+                $('#confirm-small').style.visibility = "hidden";
+            }
+            else{
+                $('#confirm').style.border = "2px solid red";
+                $('#confirm-small').innerHTML ="Passwords do not match";
+                $('#confirm-small').style.color = "red";
+                $('#confirm-small').style.visibility = "visible";
+            }
+        }
+
+        function submit(){
+            UserName();
+            Email();
+            Password();
+            Confirm();
+        }
+
+    </script>
+</body>
+</html>
