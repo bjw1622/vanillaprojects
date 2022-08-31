@@ -5,5 +5,4 @@
 
 
 2. Movie Seat Booking
-3. 
 ![image](https://user-images.githubusercontent.com/63109802/187596454-671428d3-bbae-48eb-b821-375964d25f17.png)
