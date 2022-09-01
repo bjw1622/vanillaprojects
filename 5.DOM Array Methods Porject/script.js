@@ -9,7 +9,7 @@ addUserBtn.addEventListener('click',()=>{
     .then((response)=>response.json())
     .then((data)=>{
         main.innerHTML += `<div>
-        <h3><strong>${data.results[0].name.first +" "+ data.results[0].name.last}</strong> <span class="wealth">${(Math.floor(Math.random() * 1000000)).toFixed(2)}</span></h3>
+        <h3><strong>${data.results[0].name.first +" "+ data.results[0].name.last}</strong><span class="wealth">${(Math.floor(Math.random() * 1000000)).toFixed(2)}</span></h3>
         </div>`});
 });
 
@@ -27,3 +27,22 @@ document.querySelector('#show-millionaires').addEventListener('click',()=>{
         }
     });
 })
+
+// sort by Richest
+document.querySelector('#sort').addEventListener('click',()=>{
+    const arr = [];
+    document.querySelectorAll('.wealth').forEach(function(element){
+        arr.push()
+    });
+})
+
+// calculate entire wealth
+document.querySelector('#calculate-wealth').addEventListener('click',()=>{
+    let total = 0;
+    document.querySelectorAll('.wealth').forEach(function(element){
+        total += (parseFloat(element.innerHTML));
+    });
+    document.querySelector('#main').innerHTML += `<h3>Total Wealth: <span><strong>$${total.toFixed(2)}</strong></span></h3>`
+})
+
+
