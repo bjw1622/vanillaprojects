@@ -14,9 +14,16 @@ addUserBtn.addEventListener('click',()=>{
 });
 
 doubleBtn.addEventListener('click',()=>{
-    console.log(document.querySelectorAll(".wealth").length);
     for(let i =0; i < document.querySelectorAll(".wealth").length; i++){
         document.querySelectorAll(".wealth")[i].innerHTML=((document.querySelectorAll(".wealth")[i].innerHTML)*2).toFixed(2);
     }
 });
 
+// show only millonaries
+document.querySelector('#show-millionaires').addEventListener('click',()=>{
+    document.querySelectorAll('.wealth').forEach(function(element){
+        if(element.innerHTML < 1000000){
+            element.parentElement.remove();
+        }
+    });
+})
