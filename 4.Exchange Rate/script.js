@@ -11,7 +11,7 @@ function calculate() {
       .then(res => res.json())
       .then(data => {
         const rate = data.rates[currency_two] / data.rates[currency_one];
-        rateEl.innerText = `1 ${currency_one} = ${rate} ${currency_two}`;
+        rateEl.innerText = `1 ${currency_one} = ${rate.toFixed(3)} ${currency_two}`;
         twoInput.value = (oneInput.value * (rate)).toFixed(2);
       });
 }
@@ -28,7 +28,7 @@ swap.addEventListener('click',()=>{
       .then(res => res.json())
       .then(data => {
         const rate = data.rates[currency_two] / data.rates[currency_one];
-        rateEl.innerText = `1 ${currency_one} = ${rate} ${currency_two}`;
+        rateEl.innerText = `1 ${currency_one} = ${rate.toFixed(3)} ${currency_two}`;
         twoInput.value = (oneInput.value * (rate)).toFixed(2);
       });
 });
