@@ -8,7 +8,7 @@ addUserBtn.addEventListener('click',()=>{
     })
     .then((response)=>response.json())
     .then((data)=>{
-        main.innerHTML += `<div>
+        main.innerHTML += `<div class="info">
         <h3><strong>${data.results[0].name.first +" "+ data.results[0].name.last}</strong><span class="wealth">${(Math.floor(Math.random() * 1000000)).toFixed(2)}</span></h3>
         </div>`});
 });
@@ -32,8 +32,25 @@ document.querySelector('#show-millionaires').addEventListener('click',()=>{
 document.querySelector('#sort').addEventListener('click',()=>{
     const arr = [];
     document.querySelectorAll('.wealth').forEach(function(element){
-        arr.push()
+        arr.push(element)
     });
+    // value가 높은 순서대로 정렬
+    arr.sort((a,b)=>{
+        return parseFloat(b.innerHTML) - parseFloat(a.innerHTML);
+    })
+    // div info 다 지우기
+    const info = document.querySelectorAll('.info');
+    info.forEach((element)=>{
+        element.remove();
+    })
+    // 정렬 상태로 다시 그리기
+    arr.forEach((element)=>{
+        const tag = document.createElement("div");
+        tag.className = 'info'
+        tag.appendChild(element);
+        console.log(tag);
+        document.querySelector('main').appendChild(tag);
+    })
 })
 
 // calculate entire wealth
@@ -44,5 +61,4 @@ document.querySelector('#calculate-wealth').addEventListener('click',()=>{
     });
     document.querySelector('#main').innerHTML += `<h3>Total Wealth: <span><strong>$${total.toFixed(2)}</strong></span></h3>`
 })
-
 
