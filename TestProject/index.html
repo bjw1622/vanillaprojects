@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .checking {
+            accent-color: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,32 +21,53 @@
         //const row = prompt('가로 행을 입력해주세요');
         //const column = prompt('세로 행을 입력해주세요');
         //const checkCount = prompt('체크 갯수');
-        const check = 4;
+        const check = 2;
         const row = 5;
         const column = 5;
+        let countChecking = 0;
         for (let i = 0; i < row; i++) {
             let rowTemplate = document.createElement("div");
             rowTemplate.classList.add('row');
             rowTemplate.classList.add(i);
             document.querySelector('#template').append(rowTemplate);
             for (let j = 0; j < column; j++) {
-                let columnTemplate = document.createElement("button");
+                let columnTemplate = document.createElement("input");
+                columnTemplate.setAttribute('type', 'checkbox');
                 columnTemplate.classList.add('column');
                 columnTemplate.classList.add(`${i}-${j}`);
+                columnTemplate.classList.add(`uncheked`);
                 document.getElementsByClassName(`row ${i}`)[0].appendChild(columnTemplate);
             }
         }
         const columnBtn = document.querySelectorAll('.column');
         columnBtn.forEach((btn) => {
             btn.addEventListener('click', (event) => {
-                if (event.target.classList.contains('checked')) {
-                    event.target.classList.remove('checked');
+                if (event.target.classList[2] === "uncheked") {
+                    event.target.classList.replace("uncheked", "checking");
+                    countChecking += 1;
+                    allDisabled(countChecking);
                 }
-                else {
-                    event.target.classlist[2].add('checked');
+                else if (event.target.classList[2] === "checking") {
+                    event.target.classList.replace("checking", "uncheked");
+                    countChecking -= 1;
+                    allDisabled(countChecking);
                 }
             })
         });
+        function allDisabled(countChecking) {
+            if (countChecking === check) {
+                const uncheckdBtn = document.querySelectorAll('.uncheked');
+                uncheckdBtn.forEach((btn) => {
+                    btn.disabled = true;
+                })
+            }
+            else {
+                const uncheckdBtn = document.querySelectorAll('.uncheked');
+                uncheckdBtn.forEach((btn) => {
+                    btn.disabled = false;
+                })
+            }
+        }
     </script>
 </body>
 
