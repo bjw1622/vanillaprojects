@@ -18,12 +18,12 @@
 
     </div>
     <script>
-        //const row = prompt('가로 행을 입력해주세요');
-        //const column = prompt('세로 행을 입력해주세요');
-        //const checkCount = prompt('체크 갯수');
-        const check = 2;
-        const row = 5;
-        const column = 5;
+        const row = prompt('가로 행을 입력해주세요');
+        const column = prompt('세로 행을 입력해주세요');
+        const check = prompt('체크 갯수');
+        //const check = 4;
+        //const row = 8;
+        //const column = 8;
         let countChecking = 0;
         for (let i = 0; i < row; i++) {
             let rowTemplate = document.createElement("div");
@@ -55,7 +55,7 @@
             })
         });
         function allDisabled(countChecking) {
-            if (countChecking === check) {
+            if (countChecking === parseInt(check)) {
                 const uncheckdBtn = document.querySelectorAll('.uncheked');
                 uncheckdBtn.forEach((btn) => {
                     btn.disabled = true;
